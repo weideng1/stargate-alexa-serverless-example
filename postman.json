@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "822e3519-b6df-48d4-a545-93c001c151cb",
+		"name": "My Freezer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get an Auth Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v1/auth",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Freezer Item",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Cassandra-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"gameCode\": \"DANG\",\n    \"currentState\": {\n        \"name\": \"ADD_PLAYERS\",\n        \"roundId\": null\n    },\n    \"players\": {},\n    \"audienceSize\": 0,\n    \"rounds\": {\n        \"1\": {\n            \"type\": \"QUESTION\",\n            \"title\": \"Round 1\",\n            \"scoreMultiplier\": 1\n        },\n        \"2\": {\n            \"type\": \"QUESTION\",\n            \"title\": \"Round 1\",\n            \"scoreMultiplier\": 2\n        },\n        \"3\": {\n            \"type\": \"COMIC\",\n            \"title\": \"Final Round\",\n            \"scoreMultiplier\": 3\n        }\n    },\n    \"questions\": {\n        \"1\": {\n            \"roundId\": 1,\n            \"content\": \"What time is it?\"\n        },\n        \"2\": {\n            \"roundId\": 2,\n            \"content\": \"What day is it?\"\n        },\n        \"3\": {\n            \"roundId\": 3,\n            \"content\": \"https://xkcd.com/386/\"\n        }\n    },\n    \"answers\": {},\n    \"votes\": {},\n    \"audienceVotes\": {}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspace}}/collections/freezer/1",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspace}}",
+						"collections",
+						"games",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a 2nd Freezer Item",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Cassandra-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"gameCode\": \"DANG\",\n    \"currentState\": {\n        \"name\": \"ADD_PLAYERS\",\n        \"roundId\": null\n    },\n    \"players\": {},\n    \"audienceSize\": 0,\n    \"rounds\": {\n        \"1\": {\n            \"type\": \"QUESTION\",\n            \"title\": \"Round 1\",\n            \"scoreMultiplier\": 1\n        },\n        \"2\": {\n            \"type\": \"QUESTION\",\n            \"title\": \"Round 1\",\n            \"scoreMultiplier\": 2\n        },\n        \"3\": {\n            \"type\": \"COMIC\",\n            \"title\": \"Final Round\",\n            \"scoreMultiplier\": 3\n        }\n    },\n    \"questions\": {\n        \"1\": {\n            \"roundId\": 1,\n            \"content\": \"What time is it?\"\n        },\n        \"2\": {\n            \"roundId\": 2,\n            \"content\": \"What day is it?\"\n        },\n        \"3\": {\n            \"roundId\": 3,\n            \"content\": \"https://xkcd.com/386/\"\n        }\n    },\n    \"answers\": {},\n    \"votes\": {},\n    \"audienceVotes\": {}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspace}}/collections/freezer/1",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspace}}",
+						"collections",
+						"games",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Freezer Item",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cassandra-Token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspace}}/collections/freezer/1",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspace}}",
+						"collections",
+						"games",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the names of all Freezer Items",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cassandra-Token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspace}}/collections/freezer/1",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspace}}",
+						"collections",
+						"games",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read the age of a Freezer Item",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Cassandra-Token",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspace}}/collections/freezer/1/questions",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspace}}",
+						"collections",
+						"games",
+						"1",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Freezer Item",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Cassandra-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{db}}-{{region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{keyspace}}/collections/freezer/1",
+					"protocol": "https",
+					"host": [
+						"{{db}}-{{region}}",
+						"apps",
+						"astra",
+						"datastax",
+						"com"
+					],
+					"path": [
+						"api",
+						"rest",
+						"v2",
+						"namespaces",
+						"{{keyspace}}",
+						"collections",
+						"games",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ade6d8a0-a0e4-4f3a-87d5-fb514be21390",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6357ada6-e26f-49d7-ac96-61a9806d4e3c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "361311ce-bc84-4a0a-b255-617ff5e79cdb",
+			"key": "region",
+			"value": "us-east1"
+		},
+		{
+			"id": "aa3b43f6-c870-4e60-bbf2-ad9685254ec6",
+			"key": "db",
+			"value": "ea87b6f8-5a57-47bc-80f0-913cf9d17102"
+		},
+		{
+			"id": "a4b3571a-5113-4e51-9151-68a1cc2c9970",
+			"key": "username",
+			"value": "hack"
+		},
+		{
+			"id": "f92294e0-e6d4-4020-9c21-d869e4afa229",
+			"key": "password",
+			"value": "datastax"
+		},
+		{
+			"id": "480655f1-0a5a-4bc2-af17-51a16f9816cf",
+			"key": "keyspace",
+			"value": "stargate"
+		},
+		{
+			"id": "dfbabba0-8232-41df-9cc7-c152f06cdd8d",
+			"key": "token",
+			"value": "76d0cefa-3b0e-43a0-b6f8-683b7c2bc247"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

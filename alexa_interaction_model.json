@@ -1,0 +1,172 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "my freezer",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetAllItemIntent",
+                    "slots": [],
+                    "samples": [
+                        "what are in there",
+                        "what do I have",
+                        "list all of my items",
+                        "get all of my items"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AddItemIntent",
+                    "slots": [
+                        {
+                            "name": "item_name",
+                            "type": "AMAZON.Food"
+                        },
+                        {
+                            "name": "item_price",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "add {item_name} with price of {item_price}"
+                    ]
+                },
+                {
+                    "name": "FindItemIntent",
+                    "slots": [
+                        {
+                            "name": "food_item_name",
+                            "type": "AMAZON.Food"
+                        }
+                    ],
+                    "samples": [
+                        "do I have any {food_item_name}",
+                        "do I have {food_item_name}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "AMAZON.Food",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "lamb rack"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "beef brisket"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GetAllItemIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": []
+                },
+                {
+                    "name": "AddItemIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "item_name",
+                            "type": "AMAZON.Food",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "item_price",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {},
+                            "validations": [
+                                {
+                                    "type": "isLessThanOrEqualTo",
+                                    "prompt": "Slot.Validation.812003231811.799541127570.49051674029",
+                                    "value": "100"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "FindItemIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "food_item_name",
+                            "type": "AMAZON.Food",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.1004284099587",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want me to add"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.401635062845.1452238931201",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "You didn't say what to add, please specify"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.812003231811.799541127570.49051674029",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "the price cannot be higher than one hundred"
+                    }
+                ]
+            }
+        ]
+    }
+}

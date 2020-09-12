@@ -1,0 +1,22 @@
+{
+  "name": "stargate-alexa-serverless-examples",
+  "version": "0.0.1",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "faker": "^5.1.0",
+    "lodash": "^4.17.20",
+    "mocha": "^8.1.3",
+    "node-fetch": "^2.6.1",
+    "ask-sdk-core": "^2.0.0",
+    "ask-sdk-model": "^1.0.0",
+    "i18next": "^15.0.5"
+  },
+  "author": "Wei Deng",
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha index.js"
+  },
+  "mocha": {
+    "timeout": 10000
+  }
+}
